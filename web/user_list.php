@@ -1,24 +1,12 @@
 <?php
-require "../src/header.php";
-?>
 
-<h1>Users List</h1>
-<div class="user-list row">
+// Init Framework
+require_once '../src/core/init.php';
 
-  <?php
-  for ($i = 0; $i < 7; $i++) {
-    ?>
-    <div class="profile-thumbnail">
-      <a href="/profile.php" class="profile-link">
-        <img src="/img/def-avatar.jpg" alt="Name Surname" class="profile-avatar">
-        <h3 class="profile-name">Name Surname</h3>
-      </a>
-    </div>
-    <?php
-  }
-  ?>
 
-</div>
+// Process request with using of models
+$profiles = get_profile_list();
+$data = ['profiles' => $profiles];
 
-<?php
-require "../src/footer.php";
+// Give Response
+load_view('user_list', $data);

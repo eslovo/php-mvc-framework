@@ -3,6 +3,11 @@
   width:1000px;
 }
 
+/* GENERAL */
+.form-errors{
+  color:#d9534f;
+}
+
 /* PROFILE */
 .profile-box .profile-body{
   margin-top:30px;
@@ -14,10 +19,14 @@
   width:390px;
 }
 .profile-box .profile-header .profile-avatar img{
+  border:4px #5BC0DE solid;
   border-radius: 50%;
-  height:400px;
+  height:400px; /* ToDo: make proper circle */
   margin-top:25px;
   width:390px;
+}
+.profile-box .profile-header .profile-avatar.owner img{
+  border-color:#DF691A;
 }
 .profile-box .profile-header .profile-info{
   font-size:35px;

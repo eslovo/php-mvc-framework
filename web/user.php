@@ -5,15 +5,16 @@ require_once '../src/core/init.php';
 
 
 // Process request with using of models
-$user = get_authorized_user();
+$id = intval($_GET['id']); // Get Request Info
+$profile = get_profile_data($id);
 
 
   // Give Response
-if ($user !== NULL) {
+if ($profile !== NULL) {
   $data = [
-      'profile' => $user,
+      'profile' => $profile,
   ];
   load_view('user', $data);
 } else {
-  error403();
+  error404('user');
 }
