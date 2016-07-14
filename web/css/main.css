@@ -21,7 +21,7 @@
 .profile-box .profile-header .profile-avatar img{
   border:4px #5BC0DE solid;
   border-radius: 50%;
-  height:400px; /* ToDo: make proper circle */
+  height:390px;
   margin-top:25px;
   width:390px;
 }
