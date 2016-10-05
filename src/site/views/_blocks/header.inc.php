@@ -17,14 +17,14 @@
             <?php
             if (!empty($user)) {
               ?>
-              <li><a href = "/profile.php">My Profile</a></li>
-              <li><a href = "/logout.php">Exit</a></li>
+              <li><a href = "/profile/show">My Profile</a></li>
+              <li><a href = "/security/logout">Exit</a></li>
               <?php
             }
             else {
               ?>
-              <li><a href = "/auth.php">Sign in</a></li>
-              <li><a href = "/reg.php">Register</a></li>
+              <li><a href = "/security/auth">Sign in</a></li>
+              <li><a href = "/security/reg">Register</a></li>
               <?php
             }
             ?>

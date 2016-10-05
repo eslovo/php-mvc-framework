@@ -1,7 +1,9 @@
 <?php
 // Get age from birth date
 // It is job of view to show info the right way
-$age = $data['profile']['birthday']->diff(new DateTime('NOW'))->format('%y');
+$birthday = new DateTimeImmutable();
+$birthday = $birthday->setTimestamp($data['profile']['birthday']);
+$age = $birthday->diff(new DateTime('NOW'))->format('%y');
 
 // Get avatar: user's or default
 $avatar = empty($data['profile']['avatar']) ? '/img/def-avatar.jpg' : $data['profile']['avatar'];

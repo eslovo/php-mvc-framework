@@ -26,47 +26,6 @@ function dumpe($var = NULL){
 }
 
 /**
- * Makes scope for view data, shows base template frame
- * and adds globals view variables (for all actions).
- * 
- * @param string $view_name
- * @param array $data
- */
-function load_view($view_name, $data){
-  /*? Check $view_name ?*/
-  if(file_exists(SITE_PATH.'/views/'.$view_name.'.inc.php')){
-    // Add global view variabls to this scope
-    $user = get_authorized_user();
-    // Make response
-    require SITE_PATH.'/views/blocks/header.inc.php';
-    require SITE_PATH.'/views/'.$view_name.'.inc.php';
-    require SITE_PATH.'/views/blocks/footer.inc.php';
-  }
-  else{
-    // In more complex system better use exceptions.
-    exit('No such template: '.$view_name.'.inc.php');
-  }
-}
-
-/**
- * Shows 403 page
- */
-function error403(){
-  // Site has to have this template!
-  load_view('error_403', []);
-}
-
-/**
- * Shows 404 page for concrete thing that wasn't found.
- * 
- * @param string $entity
- */
-function error404($entity = 'page'){
-  // Site has to have this template!
-  load_view('error_404', ['entity' => $entity]);
-}
-
-/**
  * Creates password hash.
  * 
  * @param string $password
@@ -116,4 +75,20 @@ function get_authorized_user(){
     return $_SESSION['user'];
   }
   return NULL;
+}
+
+/**
+ * Fill associated array with given $data by $schema.
+ * 
+ * @param array $schema
+ * @param array $data
+ * 
+ * @return array
+ */
+function fill_entity($schema, $data){
+  $result = [];
+  foreach($schema as $name){
+    $result[$name] = isset($data[$name])?$data[$name]:'';
+  }
+  return $result;
 }
